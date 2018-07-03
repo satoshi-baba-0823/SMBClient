@@ -74,7 +74,7 @@ public struct NetBIOSNameServiceEntry {
     }
 
     public var smbServer: SMBServer {
-        return SMBServer(hostname: self.name, ipAddress: self.ipAddress)
+        return SMBServer(hostname: self.name, ipAddress: self.ipAddress, domain: self.group)
     }
 }
 

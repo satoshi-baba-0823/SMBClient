@@ -11,15 +11,18 @@ import Foundation
 public struct SMBServer {
     public let hostname: String
     public let ipAddress: UInt32
+    public let domain: String
 
-    public init(hostname: String, ipAddress: UInt32) {
+    public init(hostname: String, ipAddress: UInt32, domain: String) {
         self.hostname = hostname
         self.ipAddress = ipAddress
+        self.domain = domain
     }
 
     // fails initiation if ipAddress lookup fails
-    public init?(hostname: String) {
+    public init?(hostname: String, domain: String = "") {
         self.hostname = hostname
+        self.domain = domain
         let ns = NetBIOSNameService()
         if let addr = ns.resolveIPAddress(forName: self.hostname, ofType: .fileServer) {
             self.ipAddress = addr

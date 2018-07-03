@@ -255,7 +255,7 @@ public class SMBSession {
         }
 
         smb_session_set_creds(self.rawSession,
-                              self.server.hostname.cString(using: .utf8),
+                              self.server.domain.cString(using: .utf8),
                               self.credentials.userName.cString(using: .utf8),
                               self.credentials.password.cString(using: .utf8))
         if smb_session_login(self.rawSession) != 0 {
